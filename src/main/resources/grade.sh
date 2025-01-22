@@ -91,7 +91,7 @@ fi
 num_db_records=$(redis-cli DBSIZE | awk '{print $1}')
 
 echo ">>>>>>>>>>> CHECKING REDIS RECORDS "
-if [[ $num_db_records > 2000 ]]; then
+if [[ $num_db_records -gt 2000 ]]; then
 	echo "Successfully entered records in Redis"
 else
 	echo "Something went wrong in record insertion. Must check manually."
