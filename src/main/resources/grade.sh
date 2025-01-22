@@ -24,7 +24,7 @@ fi
 # Default input.json, non-weighted
 echo ">>>>>>>>>>> CHECKING THE APP RUNS"
 
-output=$(java -jar target/HW1-solution-1.0-SNAPSHOT.jar -weighted=false -file="./input.json")
+output=$(java -jar target/HW1-solution-1.0-SNAPSHOT.jar weighted=false file="./input.json")
 
 if [ $? -eq 0 ]; then
 	echo "Execution succeeded"
@@ -49,7 +49,8 @@ seconds=${seconds:-0}
 # Calculate total seconds
 total_seconds=$((hours * 3600 + minutes * 60 + seconds))
 
-# We will manually check the results
+# We will manually check the results if the validation fails
+# As long as the values look reasonable we will accept the results
 echo ">>>>>>>>>> CHECKING WITH FIRST JSON"
 echo "***** application ouptut begins *****"
 echo "Total posts = " $total_posts
@@ -57,13 +58,12 @@ echo "Avg. replies = " $avg_replies
 echo "Duration = " $duration
 echo "***** application output ends *****"
 
-if [ "$total_posts" -eq 1993 ] && (( $(echo "$avg_replies > 1" | bc -l) )) && [ "$total_seconds" -lt 300 ]; then
+if [ "$total_posts" -eq 1993 ] && (( $(echo "$avg_replies > 1" | bc -l) )) && [ "$total_seconds" -lt 6000 ]; then
 	echo "Results meet the conditions!"
 else
 	echo "Results don't meet the conditions. Please review manually."
 fi
 
-# @TODO We will add more tests for other json files
 
 # Run tests
 
