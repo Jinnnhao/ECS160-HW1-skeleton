@@ -24,7 +24,7 @@ fi
 # Default input.json, non-weighted
 echo ">>>>>>>>>>> CHECKING THE APP RUNS"
 
-output=$(java -jar target/HW1-solution-1.0-SNAPSHOT.jar weighted=false file="./input.json")
+output=$(java -jar target/HW1-solution-1.0-SNAPSHOT.jar -weighted=false -file="./input.json")
 
 if [ $? -eq 0 ]; then
 	echo "Execution succeeded"
