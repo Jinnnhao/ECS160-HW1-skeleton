@@ -97,3 +97,12 @@ else
 	echo "Something went wrong in record insertion. Must check manually."
 fi
 
+
+### Check the number of classes. We will also manually evaluate the design
+
+if [[ $(find . -name "*.class"  | wc | awk '{print $1}' | bc ) -gt 4 ]] ; 
+then 
+	echo "More than 4 classes created."; 
+else
+	echo "Fewer than 4 classes created."
+fi
