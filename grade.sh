@@ -77,7 +77,7 @@ else
 	echo "$test_run_output"
 fi
 
-tests_run=$(echo "$test_run_output" | grep "Tests run: \d+" | grep -v "elapsed" | awk -F": " '{print $2}')
+tests_run=$(echo "$test_run_output" | grep "Tests run: [0\9]*" | grep -v "elapsed" | awk -F'Tests run: |, ' '{print $2}')
 tests_run=$(echo "$tests_run" | tr -d ' \n')
 
 echo "Number of tests run: $tests_run"
